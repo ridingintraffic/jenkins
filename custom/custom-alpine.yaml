@@ -1,0 +1,21 @@
+version: "3.6"
+volumes:
+  jenkins_home:
+services:
+ 
+  main:
+    image: ridingintraffic/jenkins
+    ports:
+      - 8080:8080
+      - 50000:50000
+    secrets:
+      - jenkins-user
+      - jenkins-pass
+    volumes:
+      - jenkins_home:/var/jenkins_home
+ 
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true
